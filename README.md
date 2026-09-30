@@ -1,6 +1,6 @@
 # TCI-Meter
 
-🇬🇧 English · 🇩🇪 [Deutsch](README.de.md)
+English · [Deutsch](README.de.md)
 
 An analog-style S / PO / SWR meter for transceivers with a [TCI interface](https://github.com/ExpertSDR3/TCI)
 (Expert Electronics, e.g. SunSDR with ExpertSDR3) – for Windows.
