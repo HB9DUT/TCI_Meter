@@ -1,0 +1,30 @@
+﻿<!-- Copyright © 2026, HB9DUT
+     SPDX-License-Identifier: GPL-3.0-or-later -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>TciMeter</RootNamespace>
+    <AssemblyName>TciMeter</AssemblyName>
+
+    <Product>TCI-Meter</Product>
+    <AssemblyTitle>TCI-Meter</AssemblyTitle>
+    <Company>HB9DUT</Company>
+    <Authors>HB9DUT</Authors>
+    <Copyright>Copyright © 2026, HB9DUT. GPL-3.0-or-later.</Copyright>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>    <Version>1.0.0</Version>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\meter.png" />
+    <Resource Include="Assets\app.ico" />
+    <None Update="settings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="LICENSE" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

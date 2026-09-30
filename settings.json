@@ -1,0 +1,9 @@
+{
+  "Host": "localhost",
+  "Port": 50001,
+  "Receiver": 0,
+  "Channel": 0,
+  "MaxPowerW": 100,
+  "S9Dbm": -73,
+  "SensorIntervalMs": 50
+}
