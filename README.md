@@ -1,62 +1,63 @@
 # TCI-Meter
 
-Analoges S-/PO-/SWR-Meter für Transceiver mit [TCI-Schnittstelle](https://github.com/ExpertSDR3/TCI)
-(Expert Electronics, z. B. SunSDR mit ExpertSDR3) – für Windows.
+🇬🇧 English · 🇩🇪 [Deutsch](README.de.md)
 
-Das Meter zeigt im **Empfang** den S-Wert und im **Senden** (auch bei Tune) wahlweise die Sendeleistung oder das SWR.
-Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über TCI.
+An analog-style S / PO / SWR meter for transceivers with a [TCI interface](https://github.com/ExpertSDR3/TCI)
+(Expert Electronics, e.g. SunSDR with ExpertSDR3) – for Windows.
+
+While **receiving** the needle shows the S-meter reading. While **transmitting** (including Tune) it shows either the
+output power or the SWR, as you prefer. Band, mode, frequency, signal level and SNR are displayed below the meter.
+All data is read live over TCI.
 
 ## Installation
 
-1. Unter [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest) die aktuelle `TciMeter-Setup-x.y.z.exe` herunterladen.
-2. Die Datei ausführen und dem Assistenten folgen.
-   - Es sind **keine Administratorrechte** nötig, die Installation erfolgt standardmässig nur für den aktuellen Benutzer.
-     Auf Wunsch kann für alle Benutzer installiert werden.
-   - Es muss **kein .NET** installiert sein.
-   - Optional wird ein Desktop-Symbol angelegt, im Startmenü gibt es immer einen Eintrag.
-3. Beim ersten Start die Verbindung zum Transceiver einrichten (siehe unten).
+1. Download the latest `TciMeter-Setup-x.y.z.exe` from [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest).
+2. Run the file and follow the wizard.
+   - **No administrator rights** are required; by default the app is installed for the current user only.
+     Installing for all users is possible on request.
+   - **No .NET installation** is needed.
+   - A desktop shortcut is optional; a Start menu entry is always created.
+3. On first start, set up the connection to your transceiver (see below).
 
-**Hinweis zu Windows SmartScreen:** Der Installer ist nicht digital signiert. Windows kann deshalb beim ersten Start
-«Der Computer wurde durch Windows geschützt» anzeigen. Über **Weitere Informationen → Trotzdem ausführen** lässt sich
-die Installation fortsetzen.
+**Note on Windows SmartScreen:** the installer is not digitally signed, so Windows may show
+"Windows protected your PC" on first launch. Click **More info → Run anyway** to continue.
 
-Voraussetzung: Windows 10 oder 11 (64 Bit).
+Requirements: Windows 10 or 11 (64-bit).
 
-## Erster Start
+## First start
 
-Der TCI-Server muss im Transceiver-Programm (z. B. ExpertSDR3) aktiv sein. Standardmässig verbindet sich das Meter mit
-`localhost`, Port `50001`. Läuft das Programm auf einem anderen Rechner, die Adresse unter **Einstellungen** anpassen.
+The TCI server must be enabled in your transceiver software (e.g. ExpertSDR3). By default the meter connects to
+`localhost`, port `50001`. If the software runs on another computer, change the address under **Settings**.
 
-Solange keine Verbindung besteht, steht unten links «Verbinde mit …»; das Meter verbindet sich automatisch neu,
-sobald der Server erreichbar ist.
+While there is no connection, the bottom left shows "Verbinde mit …" (connecting); the meter reconnects automatically as
+soon as the server is reachable.
 
-## Bedienung
+## Usage
 
-- **Einstellungen:** Zahnrad unten rechts oder Rechtsklick auf das Meter.
-  - *Rufzeichen* – erscheint im Fenstertitel («HB9XYZ - TCI-Meter»)
-  - *Host / Port* des TCI-Servers
-  - *Receiver / Kanal* – welcher Empfänger und welches VFO angezeigt werden (0 = A, 1 = B)
-  - *PO max (W)* – Vollausschlag der Leistungsanzeige, passend zur Sendeleistung des Geräts
-  - *Senden (auch Tune)* – Zeiger zeigt die Sendeleistung **oder** das SWR
-- **Rechtsklick:** Einstellungen, *Immer im Vordergrund*, Info
-- Die Einstellungen werden pro Windows-Benutzer gespeichert und bleiben bei Updates erhalten.
+- **Settings:** gear icon at the bottom right, or right-click the meter.
+  - *Callsign* – shown in the window title ("HB9XYZ - TCI-Meter")
+  - *Host / Port* of the TCI server
+  - *Receiver / Channel* – which receiver and VFO are displayed (0 = A, 1 = B)
+  - *PO max (W)* – full-scale value of the power reading, matching your radio's output power
+  - *Transmit (incl. Tune)* – the needle shows the output power **or** the SWR
+- **Right-click menu:** Settings, *Always on top*, Info
+- Settings are stored per Windows user and are kept when you update.
 
-Der **SNR** ist eine Schätzung: TCI liefert nur den Pegel, das Rauschniveau wird aus dem Pegelverlauf der letzten
-30 Sekunden bestimmt.
+The **SNR** is an estimate: TCI only provides the signal level, so the noise floor is derived from the level history of
+the last 30 seconds.
 
-## Update und Deinstallation
+## Update and uninstall
 
-- **Update:** Neuen Installer ausführen – er ersetzt die installierte Version, die Einstellungen bleiben erhalten.
-- **Deinstallation:** Über *Einstellungen → Apps* oder das Startmenü. Auf Wunsch werden dabei auch die gespeicherten
-  Einstellungen gelöscht.
+- **Update:** run the new installer – it replaces the installed version and keeps your settings.
+- **Uninstall:** via *Settings → Apps* or the Start menu. If you like, the saved settings are removed as well.
 
-## Lizenz
+## License
 
 Copyright © 2026, HB9DUT
 
-Dieses Programm ist freie Software: Sie können es unter den Bedingungen der GNU General Public License, wie von der
-Free Software Foundation veröffentlicht, Version 3 oder (nach Ihrer Wahl) jeder späteren Version, weitergeben und/oder
-ändern. Es wird in der Hoffnung verbreitet, dass es nützlich ist, aber **ohne jede Gewährleistung**. Der vollständige
-Lizenztext steht in der Datei [LICENSE](LICENSE).
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later
+version. It is distributed in the hope that it will be useful, but **without any warranty**. The full license text is in
+the file [LICENSE](LICENSE).
 
 SPDX-License-Identifier: GPL-3.0-or-later
