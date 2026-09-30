@@ -8,6 +8,10 @@ Analoges S-/PO-/SWR-Meter für Transceiver mit [TCI-Schnittstelle](https://githu
 Das Meter zeigt im **Empfang** den S-Wert und im **Senden** (auch bei Tune) wahlweise die Sendeleistung oder das SWR.
 Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über TCI.
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="TCI-Meter mit S-Meter-Anzeige im Empfang auf 40 m" width="620">
+</p>
+
 ## Installation
 
 1. Unter [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest) die aktuelle `TciMeter-Setup-x.y.z.exe` herunterladen.

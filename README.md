@@ -9,6 +9,10 @@ While **receiving** the needle shows the S-meter reading. While **transmitting**
 output power or the SWR, as you prefer. Band, mode, frequency, signal level and SNR are displayed below the meter.
 All data is read live over TCI.
 
+<p align="center">
+  <img src="docs/screenshot.png" alt="TCI-Meter showing an S-meter reading while receiving on 40 m" width="620">
+</p>
+
 ## Installation
 
 1. Download the latest `TciMeter-Setup-x.y.z.exe` from [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest).
