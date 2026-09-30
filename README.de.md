@@ -36,6 +36,7 @@ sobald der Server erreichbar ist.
 
 - **Einstellungen:** Zahnrad unten rechts oder Rechtsklick auf das Meter.
   - *Rufzeichen* – erscheint im Fenstertitel («HB9XYZ - TCI-Meter»)
+  - *Sprache* – Deutsch oder Englisch; *Auto* folgt der Windows-Anzeigesprache
   - *Host / Port* des TCI-Servers
   - *Receiver / Kanal* – welcher Empfänger und welches VFO angezeigt werden (0 = A, 1 = B)
   - *PO max (W)* – Vollausschlag der Leistungsanzeige, passend zur Sendeleistung des Geräts

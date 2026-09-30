@@ -12,7 +12,7 @@ public partial class AboutWindow : Window
         InitializeComponent();
         DarkMode.Apply(this);
         NameText.Text = string.IsNullOrWhiteSpace(callsign) ? AppInfo.ProductName : $"{callsign} · {AppInfo.ProductName}";
-        VersionText.Text = $"Version {AppInfo.Version}";
+        VersionText.Text = Loc.T("about.version", AppInfo.Version);
         CopyrightText.Text = "Copyright © 2026, HB9DUT";
         LicenseLink.Inlines.Add(AppInfo.LicenseName);
         WarrantyText.Text = AppInfo.WarrantyNotice;

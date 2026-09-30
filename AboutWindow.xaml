@@ -1,20 +1,21 @@
-﻿<!-- Copyright © 2026, HB9DUT
+<!-- Copyright © 2026, HB9DUT
      SPDX-License-Identifier: GPL-3.0-or-later -->
 <Window x:Class="TciMeter.AboutWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Info" Icon="Assets/app.ico" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
+        xmlns:loc="clr-namespace:TciMeter"
+        Title="{loc:T about.title}" Icon="Assets/app.ico" SizeToContent="WidthAndHeight" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Background="#181818">
     <StackPanel Margin="32,24,32,22" MinWidth="280">
         <TextBlock x:Name="NameText" Foreground="#EC9A45" FontSize="26" FontWeight="Bold" HorizontalAlignment="Center" />
         <TextBlock x:Name="VersionText" Foreground="#B0703A" FontSize="13" HorizontalAlignment="Center" Margin="0,2,0,14" />
-        <TextBlock Text="Analoges S-/PO-/SWR-Meter für TCI-Transceiver" Foreground="#F2F2F2" FontSize="13"
+        <TextBlock Text="{loc:T about.description}" Foreground="#F2F2F2" FontSize="13"
                    HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" />
-        <TextBlock Text="(Expert Electronics TCI-Protokoll)" Foreground="#777" FontSize="11"
+        <TextBlock Text="{loc:T about.protocol}" Foreground="#777" FontSize="11"
                    HorizontalAlignment="Center" Margin="0,2,0,0" />
         <TextBlock x:Name="CopyrightText" Foreground="#EC9A45" FontSize="14" HorizontalAlignment="Center" Margin="0,18,0,0" />
         <TextBlock x:Name="LicenseText" Foreground="#EC9A45" FontSize="13" HorizontalAlignment="Center" Margin="0,4,0,0">
-            <Run Text="Lizenz: " /><Hyperlink x:Name="LicenseLink" Foreground="#F2B072" Click="OnLicenseClick" />
+            <Run Text="{loc:T about.license}" /><Hyperlink x:Name="LicenseLink" Foreground="#F2B072" Click="OnLicenseClick" />
         </TextBlock>
         <TextBlock x:Name="WarrantyText" Foreground="#777" FontSize="11" TextWrapping="Wrap" TextAlignment="Center"
                    MaxWidth="360" Margin="0,10,0,0" />

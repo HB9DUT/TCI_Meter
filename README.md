@@ -29,13 +29,14 @@ Requirements: Windows 10 or 11 (64-bit).
 The TCI server must be enabled in your transceiver software (e.g. ExpertSDR3). By default the meter connects to
 `localhost`, port `50001`. If the software runs on another computer, change the address under **Settings**.
 
-While there is no connection, the bottom left shows "Verbinde mit …" (connecting); the meter reconnects automatically as
-soon as the server is reachable.
+While there is no connection, the bottom left shows "Connecting to …"; the meter reconnects automatically as soon as the
+server is reachable.
 
 ## Usage
 
 - **Settings:** gear icon at the bottom right, or right-click the meter.
   - *Callsign* – shown in the window title ("HB9XYZ - TCI-Meter")
+  - *Language* – English or German; *Auto* follows the Windows display language
   - *Host / Port* of the TCI server
   - *Receiver / Channel* – which receiver and VFO are displayed (0 = A, 1 = B)
   - *PO max (W)* – full-scale value of the power reading, matching your radio's output power

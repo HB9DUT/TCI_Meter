@@ -19,9 +19,9 @@
             ClipToBounds="True">
         <Border.ContextMenu>
             <ContextMenu>
-                <MenuItem Header="Einstellungen ..." Click="OnSettings" />
-                <MenuItem Header="Immer im Vordergrund" IsCheckable="True" Click="OnTopmost" />
-                <MenuItem Header="Info ..." Click="OnAbout" />
+                <MenuItem x:Name="MenuSettings" Click="OnSettings" />
+                <MenuItem x:Name="MenuTopmost" IsCheckable="True" Click="OnTopmost" />
+                <MenuItem x:Name="MenuAbout" Click="OnAbout" />
             </ContextMenu>
         </Border.ContextMenu>
         <Grid>
@@ -104,7 +104,7 @@
                                Margin="0,8,0,0" FontSize="11" Foreground="#777" Text="Connecting ..." />
                     <Button Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Right" Content="⚙" FontSize="16"
                             Foreground="#B0703A" Background="Transparent" BorderThickness="0" Padding="6,0"
-                            Cursor="Hand" ToolTip="Einstellungen" Click="OnSettings">
+                            Cursor="Hand" x:Name="GearButton" Click="OnSettings">
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border x:Name="Bd" Background="Transparent" CornerRadius="4" Padding="{TemplateBinding Padding}">

@@ -21,12 +21,16 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        InitializeComponent();
-        DarkMode.Apply(this);
-        Title = AppInfo.Title(_settings.Callsign);
         var args = Environment.GetCommandLineArgs();
         _demo = args.Contains("--demo");
         if (args.Contains("--swr")) _settings.TxMeter = "Swr"; // override for this run only
+        var langArg = args.FirstOrDefault(a => a.StartsWith("--lang=", StringComparison.OrdinalIgnoreCase));
+        if (langArg != null) _settings.Language = langArg[7..]; // override for this run only
+
+        Loc.SetLanguage(_settings.Language);
+        InitializeComponent();
+        DarkMode.Apply(this);
+        ApplyLanguage();
         _tci = new TciClient(_settings);
         if (!_demo) _tci.Start();
 
@@ -40,14 +44,25 @@ public partial class MainWindow : Window
         if (dlg.ShowDialog() != true) return;
 
         _settings = dlg.Result;
-        Title = AppInfo.Title(_settings.Callsign);
+        Loc.SetLanguage(_settings.Language);
+        ApplyLanguage();
         try { _settings.Save(); }
-        catch (Exception ex) { MessageBox.Show(this, "Einstellungen konnten nicht gespeichert werden:\n" + ex.Message); }
+        catch (Exception ex) { MessageBox.Show(this, Loc.T("err.save", ex.Message)); }
 
         // reconnect with the new server
         _tci.Stop();
         _tci = new TciClient(_settings);
         if (!_demo) _tci.Start();
+    }
+
+    /// <summary>Applies the current language and callsign to the window title, menu and tooltips.</summary>
+    private void ApplyLanguage()
+    {
+        Title = AppInfo.Title(_settings.Callsign);
+        MenuSettings.Header = Loc.T("menu.settings");
+        MenuTopmost.Header = Loc.T("menu.topmost");
+        MenuAbout.Header = Loc.T("menu.about");
+        GearButton.ToolTip = Loc.T("tip.settings");
     }
 
     private void OnAbout(object sender, RoutedEventArgs e) =>
@@ -128,7 +143,7 @@ public partial class MainWindow : Window
         FooterText.Text = _demo ? "DEMO"
             : _tci.Connected
                 ? string.Create(inv, $"{dev}PO max {_settings.MaxPowerW:0} W")
-                : $"Verbinde mit {_settings.Host}:{_settings.Port} ...";
+                : Loc.T("status.connecting", _settings.Host, _settings.Port);
     }
 
     private void SimulateDemo(double t)

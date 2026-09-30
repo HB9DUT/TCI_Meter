@@ -10,6 +10,8 @@ public sealed class Settings
 {
     /// <summary>Amateur radio callsign shown in the window title ("CALL - TCI-Meter"); empty = "TCI-Meter".</summary>
     public string Callsign { get; set; } = "HB9DUT";
+    /// <summary>UI language: "auto" (follow Windows), "de" or "en".</summary>
+    public string Language { get; set; } = "auto";
     public string Host { get; set; } = "localhost";
     public int Port { get; set; } = 50001;
     public int Receiver { get; set; } = 0;
