@@ -8,7 +8,7 @@ Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über
 
 ## Installation
 
-1. Im Bereich **Releases** dieses Repositories die aktuelle `TciMeter-Setup-x.y.z.exe` herunterladen.
+1. Unter [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest) die aktuelle `TciMeter-Setup-x.y.z.exe` herunterladen.
 2. Die Datei ausführen und dem Assistenten folgen.
    - Es sind **keine Administratorrechte** nötig, die Installation erfolgt standardmässig nur für den aktuellen Benutzer.
      Auf Wunsch kann für alle Benutzer installiert werden.
