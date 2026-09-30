@@ -9,3 +9,6 @@ publish/
 *.suo
 .vscode/
 .claude/
+
+# Installer output
+installer/Output/
