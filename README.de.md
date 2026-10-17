@@ -9,7 +9,7 @@ Das Meter zeigt im **Empfang** den S-Wert und im **Senden** (auch bei Tune) wahl
 Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über TCI.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="TCI-Meter, dunkles Design" width="49%">
+  <img src="docs/screenshot-dark.png" alt="TCI-Meter, dunkles Design" width="49%">
   <img src="docs/screenshot-light.png" alt="TCI-Meter, helles Design" width="49%">
 </p>
 

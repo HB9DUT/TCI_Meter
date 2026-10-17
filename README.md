@@ -10,7 +10,7 @@ output power or the SWR, as you prefer. Band, mode, frequency, signal level and 
 All data is read live over TCI.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="TCI-Meter, dark theme" width="49%">
+  <img src="docs/screenshot-dark.png" alt="TCI-Meter, dark theme" width="49%">
   <img src="docs/screenshot-light.png" alt="TCI-Meter, light theme" width="49%">
 </p>
 
