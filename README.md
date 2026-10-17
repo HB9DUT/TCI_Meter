@@ -20,7 +20,8 @@ All data is read live over TCI.
 2. Run the file and follow the wizard.
    - **No administrator rights** are required for the app itself; by default the app is installed for the current user only.
      Installing for all users is possible on request.
-   - **No .NET installation** is needed.
+   - The **.NET 8 Desktop Runtime** is required. If it is missing, the installer downloads and installs it
+     automatically (one administrator confirmation prompt).
    - A desktop shortcut is optional; a Start menu entry is always created.
 3. On first start, set up the connection to your transceiver (see below).
 

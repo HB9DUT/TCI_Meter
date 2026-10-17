@@ -19,7 +19,8 @@ Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über
 2. Die Datei ausführen und dem Assistenten folgen.
    - Es sind **keine Administratorrechte** nötig, die Installation erfolgt standardmässig nur für den aktuellen Benutzer.
      Auf Wunsch kann für alle Benutzer installiert werden.
-   - Es muss **kein .NET** installiert sein.
+   - Die **.NET 8 Desktop Runtime** wird benötigt. Fehlt sie, lädt der Installer sie automatisch herunter und
+     installiert sie (eine Administrator-Bestätigung).
    - Optional wird ein Desktop-Symbol angelegt, im Startmenü gibt es immer einen Eintrag.
 3. Beim ersten Start die Verbindung zum Transceiver einrichten (siehe unten).
 
