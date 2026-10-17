@@ -20,11 +20,11 @@ $iscc = @(
 ) | Where-Object { Test-Path $_ } | Select-Object -First 1
 if (-not $iscc) { throw 'Inno Setup 6 (ISCC.exe) not found.' }
 
-# self-contained single file: no .NET runtime needed on the target machine
+# framework-dependent single file (small); the installer downloads the .NET 8 Desktop Runtime if missing
 $out = "$root\publish\installer"
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }
-dotnet publish "$root\TciMeter.csproj" -c Release -r win-x64 --self-contained true `
-    -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true `
+dotnet publish "$root\TciMeter.csproj" -c Release -r win-x64 --self-contained false `
+    -p:PublishSingleFile=true `
     -o $out
 if ($LASTEXITCODE -ne 0) { throw 'dotnet publish failed' }
 

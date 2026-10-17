@@ -48,6 +48,12 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 [CustomMessages]
 german.DeleteSettings=Sollen auch die gespeicherten Einstellungen (Rufzeichen, TCI-Host usw.) gelöscht werden?
 english.DeleteSettings=Also delete the saved settings (callsign, TCI host, etc.)?
+german.RuntimeDownload=.NET 8 Desktop Runtime wird heruntergeladen ...
+english.RuntimeDownload=Downloading .NET 8 Desktop Runtime ...
+german.RuntimeInstalling=.NET 8 Desktop Runtime wird installiert ...
+english.RuntimeInstalling=Installing .NET 8 Desktop Runtime ...
+german.RuntimeFailed=Die .NET 8 Desktop Runtime konnte nicht installiert werden.%nBitte manuell von https://dotnet.microsoft.com/download/dotnet/8.0 installieren und das Setup erneut starten.
+english.RuntimeFailed=The .NET 8 Desktop Runtime could not be installed.%nPlease install it manually from https://dotnet.microsoft.com/download/dotnet/8.0 and run this setup again.
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
@@ -65,6 +71,75 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExe}"; Tasks: desktopico
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent
 
 [Code]
+const
+  RuntimeUrl = 'https://aka.ms/dotnet/8.0/windowsdesktop-runtime-win-x64.exe';
+
+var
+  DownloadPage: TDownloadWizardPage;
+
+// True if a .NET 8.x Desktop Runtime (x64) is installed.
+function DesktopRuntimeInstalled: Boolean;
+var
+  Names: TArrayOfString;
+  I: Integer;
+  Found: TFindRec;
+begin
+  Result := False;
+  // the runtime folder is the reliable check (SDK-only machines have no registry entry)
+  if FindFirst(ExpandConstant('{commonpf64}\dotnet\shared\Microsoft.WindowsDesktop.App\8.*'), Found) then
+  begin
+    FindClose(Found);
+    Result := True;
+    Exit;
+  end;
+  if RegGetValueNames(HKLM64, 'SOFTWARE\dotnet\Setup\InstalledVersions\x64\sharedfx\Microsoft.WindowsDesktop.App', Names) then
+    for I := 0 to GetArrayLength(Names) - 1 do
+      if Copy(Names[I], 1, 2) = '8.' then
+      begin
+        Result := True;
+        Exit;
+      end;
+end;
+
+procedure InitializeWizard;
+begin
+  DownloadPage := CreateDownloadPage(SetupMessage(msgWizardPreparing), CustomMessage('RuntimeDownload'), nil);
+end;
+
+// Download and install the runtime (UAC prompt) before the files are copied.
+function NextButtonClick(CurPageID: Integer): Boolean;
+var
+  Installer: String;
+  ResultCode: Integer;
+begin
+  Result := True;
+  if (CurPageID = wpReady) and not DesktopRuntimeInstalled then
+  begin
+    DownloadPage.Clear;
+    DownloadPage.Add(RuntimeUrl, 'windowsdesktop-runtime-win-x64.exe', '');
+    DownloadPage.Show;
+    try
+      try
+        DownloadPage.Download;
+      except
+        MsgBox(CustomMessage('RuntimeFailed') + #13#10#13#10 + GetExceptionMessage, mbError, MB_OK);
+        Result := False;
+        Exit;
+      end;
+    finally
+      DownloadPage.Hide;
+    end;
+    Installer := ExpandConstant('{tmp}\windowsdesktop-runtime-win-x64.exe');
+    WizardForm.StatusLabel.Caption := CustomMessage('RuntimeInstalling');
+    if not ShellExec('runas', Installer, '/install /quiet /norestart', '', SW_SHOW, ewWaitUntilTerminated, ResultCode)
+       or not ((ResultCode = 0) or (ResultCode = 3010)) then
+    begin
+      MsgBox(CustomMessage('RuntimeFailed'), mbError, MB_OK);
+      Result := False;
+    end;
+  end;
+end;
+
 // Settings live in %AppData%\TciMeter (per Windows user); ask before removing them.
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var

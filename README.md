@@ -18,7 +18,7 @@ All data is read live over TCI.
 
 1. Download the latest `TciMeter-Setup-x.y.z.exe` from [**Releases**](https://github.com/HB9DUT/TCI_Meter/releases/latest).
 2. Run the file and follow the wizard.
-   - **No administrator rights** are required; by default the app is installed for the current user only.
+   - **No administrator rights** are required for the app itself; by default the app is installed for the current user only.
      Installing for all users is possible on request.
    - **No .NET installation** is needed.
    - A desktop shortcut is optional; a Start menu entry is always created.
