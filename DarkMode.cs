@@ -19,22 +19,26 @@ public static class DarkMode
     [DllImport("dwmapi.dll")]
     private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
 
-    public static void Apply(Window window)
+    /// <summary>Applies the title-bar theme now (if the window exists) and when it is created.</summary>
+    public static void Apply(Window window, bool dark = true)
     {
-        window.SourceInitialized += (_, _) =>
+        void Set()
         {
             var hwnd = new WindowInteropHelper(window).Handle;
-            var on = 1;
+            var on = dark ? 1 : 0;
             if (DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, ref on, sizeof(int)) != 0)
                 DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE_OLD, ref on, sizeof(int));
 
             // Match the window background (COLORREF is 0x00BBGGRR); ignored on Windows 10.
-            var caption = 0x181818;
-            var border = 0x2E2E2E;
-            var text = 0xF2F2F2;
+            var caption = dark ? 0x181818 : 0xE4E4E4;
+            var border = dark ? 0x2E2E2E : 0xBDBDBD;
+            var text = dark ? 0xF2F2F2 : 0x1A1A1A;
             DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, ref caption, sizeof(int));
             DwmSetWindowAttribute(hwnd, DWMWA_BORDER_COLOR, ref border, sizeof(int));
             DwmSetWindowAttribute(hwnd, DWMWA_TEXT_COLOR, ref text, sizeof(int));
-        };
+        }
+
+        if (new WindowInteropHelper(window).Handle != IntPtr.Zero) Set();
+        else window.SourceInitialized += (_, _) => Set();
     }
 }

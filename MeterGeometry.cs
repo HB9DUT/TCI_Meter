@@ -7,7 +7,7 @@ namespace TciMeter;
 public readonly record struct Needle(double Angle, double Length);
 
 /// <summary>
-/// Maps measured values to needle poses for the 1200x600 meter background (assets/meter.png).
+/// Maps measured values to needle poses for the 1200x600 meter background (Assets/meter-dark.png / meter-light.png).
 /// All coordinates are in image pixels. The needle pivots around <see cref="Pivot"/>; for a value we find the
 /// point on the (measured) scale arc, and derive angle and length from pivot to that point, so the tip runs along the scale.
 /// </summary>

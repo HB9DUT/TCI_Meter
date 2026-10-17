@@ -1,4 +1,4 @@
-<!-- Copyright © 2026, HB9DUT
+﻿<!-- Copyright © 2026, HB9DUT
      SPDX-License-Identifier: GPL-3.0-or-later -->
 <Window x:Class="TciMeter.SettingsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -35,7 +35,7 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition /><RowDefinition />
+                <RowDefinition /><RowDefinition /><RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Text="{loc:T settings.callsign}" />
             <TextBox Grid.Column="1" x:Name="CallBox" MaxLength="15" CharacterCasing="Upper"
@@ -45,6 +45,11 @@
                 <RadioButton x:Name="LangAutoRadio" Content="{loc:T settings.lang.auto}" GroupName="Lang" Margin="0,0,14,0" />
                 <RadioButton x:Name="LangDeRadio" Content="Deutsch" GroupName="Lang" Margin="0,0,14,0" />
                 <RadioButton x:Name="LangEnRadio" Content="English" GroupName="Lang" />
+            </StackPanel>
+            <TextBlock Grid.Row="2" Text="{loc:T settings.theme}" />
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Margin="0,4">
+                <RadioButton x:Name="ThemeDarkRadio" Content="{loc:T settings.theme.dark}" GroupName="Theme" Margin="0,0,14,0" />
+                <RadioButton x:Name="ThemeLightRadio" Content="{loc:T settings.theme.light}" GroupName="Theme" />
             </StackPanel>
         </Grid>
 

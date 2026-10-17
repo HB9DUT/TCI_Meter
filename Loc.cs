@@ -1,4 +1,4 @@
-// Copyright © 2026, HB9DUT
+﻿// Copyright © 2026, HB9DUT
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 using System.Globalization;
@@ -46,6 +46,9 @@ public static class Loc
         ["settings.callsign.tip"] = ("Wird im Fenstertitel angezeigt", "Shown in the window title"),
         ["settings.language"] = ("Sprache", "Language"),
         ["settings.lang.auto"] = ("Auto", "Auto"),
+        ["settings.theme"] = ("Darstellung", "Theme"),
+        ["settings.theme.dark"] = ("Dunkel", "Dark"),
+        ["settings.theme.light"] = ("Hell", "Light"),
         ["settings.server"] = ("TCI-Server", "TCI server"),
         ["settings.host"] = ("Host", "Host"),
         ["settings.port"] = ("Port", "Port"),

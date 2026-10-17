@@ -12,6 +12,10 @@ public sealed class Settings
     public string Callsign { get; set; } = "HB9DUT";
     /// <summary>UI language: "auto" (follow Windows), "de" or "en".</summary>
     public string Language { get; set; } = "auto";
+    /// <summary>Dial/window theme: "dark" or "light".</summary>
+    public string Theme { get; set; } = "dark";
+    [System.Text.Json.Serialization.JsonIgnore]
+    public bool IsLight => Theme.Equals("light", StringComparison.OrdinalIgnoreCase);
     public string Host { get; set; } = "localhost";
     public int Port { get; set; } = 50001;
     public int Receiver { get; set; } = 0;

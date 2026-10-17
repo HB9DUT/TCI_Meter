@@ -23,14 +23,16 @@ public partial class MainWindow : Window
     {
         var args = Environment.GetCommandLineArgs();
         _demo = args.Contains("--demo");
+        var themeArg = args.FirstOrDefault(a => a.StartsWith("--theme=", StringComparison.OrdinalIgnoreCase));
+        if (themeArg != null) _settings.Theme = themeArg[8..]; // override for this run only
         if (args.Contains("--swr")) _settings.TxMeter = "Swr"; // override for this run only
         var langArg = args.FirstOrDefault(a => a.StartsWith("--lang=", StringComparison.OrdinalIgnoreCase));
         if (langArg != null) _settings.Language = langArg[7..]; // override for this run only
 
         Loc.SetLanguage(_settings.Language);
         InitializeComponent();
-        DarkMode.Apply(this);
         ApplyLanguage();
+        ApplyTheme();
         _tci = new TciClient(_settings);
         if (!_demo) _tci.Start();
 
@@ -46,6 +48,7 @@ public partial class MainWindow : Window
         _settings = dlg.Result;
         Loc.SetLanguage(_settings.Language);
         ApplyLanguage();
+        ApplyTheme();
         try { _settings.Save(); }
         catch (Exception ex) { MessageBox.Show(this, Loc.T("err.save", ex.Message)); }
 
@@ -63,6 +66,27 @@ public partial class MainWindow : Window
         MenuTopmost.Header = Loc.T("menu.topmost");
         MenuAbout.Header = Loc.T("menu.about");
         GearButton.ToolTip = Loc.T("tip.settings");
+    }
+
+    /// <summary>Switches dial image, window, readout panel and needle between the dark and light theme.</summary>
+    private void ApplyTheme()
+    {
+        var light = _settings.IsLight;
+        MeterImage.Source = new System.Windows.Media.Imaging.BitmapImage(
+            new Uri($"pack://application:,,,/Assets/meter-{(light ? "light" : "dark")}.png"));
+
+        static SolidColorBrush Brush(string hex) => new((Color)ColorConverter.ConvertFromString(hex));
+        Root.Background = Brush(light ? "#E4E4E4" : "#181818");
+        Frame.Background = Brush(light ? "#FFFFFF" : "#0E0E0E");
+        Frame.BorderBrush = Brush(light ? "#BDBDBD" : "#2E2E2E");
+        Panel.Background = Brush(light ? "#F2F2F2" : "#121212");
+        Panel.BorderBrush = Brush(light ? "#D0D0D0" : "#222222");
+        MainNeedle.Fill = Brush(light ? "#111111" : "#F2F2F2");
+        Resources["Orange"] = Brush(light ? "#1A1A1A" : "#EC9A45");
+        Resources["OrangeDim"] = Brush(light ? "#5A5A5A" : "#B0703A");
+        FooterText.Foreground = Brush(light ? "#666666" : "#777777");
+        GearButton.Foreground = Brush(light ? "#444444" : "#B0703A");
+        DarkMode.Apply(this, !light);
     }
 
     private void OnAbout(object sender, RoutedEventArgs e) =>

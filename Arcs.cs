@@ -3,7 +3,7 @@
 
 namespace TciMeter;
 
-/// <summary>Scale arc centerline as measured from Assets/meter.png (image pixels): y for a given x, linearly interpolated.</summary>
+/// <summary>Scale arc centerline as measured from Assets/meter-dark.png (same geometry as meter-light.png) (image pixels): y for a given x, linearly interpolated.</summary>
 public sealed class Arc
 {
     private readonly double[] _x, _y;

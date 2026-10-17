@@ -1,4 +1,4 @@
-// Copyright © 2026, HB9DUT
+﻿// Copyright © 2026, HB9DUT
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 using System.Globalization;
@@ -27,6 +27,8 @@ public partial class SettingsWindow : Window
         LangDeRadio.IsChecked = lang == "de";
         LangEnRadio.IsChecked = lang == "en";
         LangAutoRadio.IsChecked = lang != "de" && lang != "en";
+        ThemeLightRadio.IsChecked = s.IsLight;
+        ThemeDarkRadio.IsChecked = !s.IsLight;
         HostBox.Text = s.Host;
         PortBox.Text = s.Port.ToString(CultureInfo.InvariantCulture);
         RxBox.Text = s.Receiver.ToString(CultureInfo.InvariantCulture);
@@ -38,7 +40,7 @@ public partial class SettingsWindow : Window
     }
 
     private void OnDefaults(object sender, RoutedEventArgs e) =>
-        Show(new Settings { Callsign = Result.Callsign, Language = Result.Language, MaxPowerW = Result.MaxPowerW,
+        Show(new Settings { Callsign = Result.Callsign, Language = Result.Language, Theme = Result.Theme, MaxPowerW = Result.MaxPowerW,
                             Receiver = Result.Receiver, Channel = Result.Channel, TxMeter = Result.TxMeter });
 
     private void OnOk(object sender, RoutedEventArgs e)
@@ -63,6 +65,7 @@ public partial class SettingsWindow : Window
         {
             Callsign = call,
             Language = LangDeRadio.IsChecked == true ? "de" : LangEnRadio.IsChecked == true ? "en" : "auto",
+            Theme = ThemeLightRadio.IsChecked == true ? "light" : "dark",
             Host = host, Port = port, Receiver = rx, Channel = ch, MaxPowerW = pw,
             TxMeter = TxSwrRadio.IsChecked == true ? "Swr" : "Power",
             S9Dbm = Result.S9Dbm, SensorIntervalMs = Result.SensorIntervalMs,

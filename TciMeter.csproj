@@ -16,12 +16,13 @@
     <Company>HB9DUT</Company>
     <Authors>HB9DUT</Authors>
     <Copyright>Copyright © 2026, HB9DUT. GPL-3.0-or-later.</Copyright>
-    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>    <Version>1.1.0</Version>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>    <Version>1.2.0</Version>
     <ApplicationIcon>Assets\app.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\meter.png" />
+    <Resource Include="Assets\meter-dark.png" />
+    <Resource Include="Assets\meter-light.png" />
     <Resource Include="Assets\app.ico" />
     <None Update="settings.json" CopyToOutputDirectory="PreserveNewest" />
     <None Include="LICENSE" CopyToOutputDirectory="PreserveNewest" />
