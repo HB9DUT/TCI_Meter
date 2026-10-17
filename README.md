@@ -10,7 +10,8 @@ output power or the SWR, as you prefer. Band, mode, frequency, signal level and 
 All data is read live over TCI.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="TCI-Meter showing an S-meter reading while receiving on 40 m" width="620">
+  <img src="docs/screenshot.png" alt="TCI-Meter, dark theme" width="49%">
+  <img src="docs/screenshot-light.png" alt="TCI-Meter, light theme" width="49%">
 </p>
 
 ## Installation
@@ -41,6 +42,7 @@ server is reachable.
 - **Settings:** gear icon at the bottom right, or right-click the meter.
   - *Callsign* – shown in the window title ("HB9XYZ - TCI-Meter")
   - *Language* – English or German; *Auto* follows the Windows display language
+  - *Theme* – dark or light dial and window
   - *Host / Port* of the TCI server
   - *Receiver / Channel* – which receiver and VFO are displayed (0 = A, 1 = B)
   - *PO max (W)* – full-scale value of the power reading, matching your radio's output power

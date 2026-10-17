@@ -9,7 +9,8 @@ Das Meter zeigt im **Empfang** den S-Wert und im **Senden** (auch bei Tune) wahl
 Darunter stehen Band, Mode, Frequenz, Pegel und SNR. Die Daten kommen live über TCI.
 
 <p align="center">
-  <img src="docs/screenshot.png" alt="TCI-Meter mit S-Meter-Anzeige im Empfang auf 40 m" width="620">
+  <img src="docs/screenshot.png" alt="TCI-Meter, dunkles Design" width="49%">
+  <img src="docs/screenshot-light.png" alt="TCI-Meter, helles Design" width="49%">
 </p>
 
 ## Installation
@@ -41,6 +42,7 @@ sobald der Server erreichbar ist.
 - **Einstellungen:** Zahnrad unten rechts oder Rechtsklick auf das Meter.
   - *Rufzeichen* – erscheint im Fenstertitel («HB9XYZ - TCI-Meter»)
   - *Sprache* – Deutsch oder Englisch; *Auto* folgt der Windows-Anzeigesprache
+  - *Darstellung* – dunkles oder helles Zifferblatt und Fenster
   - *Host / Port* des TCI-Servers
   - *Receiver / Kanal* – welcher Empfänger und welches VFO angezeigt werden (0 = A, 1 = B)
   - *PO max (W)* – Vollausschlag der Leistungsanzeige, passend zur Sendeleistung des Geräts
